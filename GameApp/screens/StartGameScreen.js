@@ -1,4 +1,4 @@
-import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
+import { TextInput, View, StyleSheet, Alert, Dimensions, useWindowDimensions } from "react-native";
 import { useState } from "react";
 
 import Colors from "../constants/colors";
@@ -9,6 +9,8 @@ import InstructionText from "../components/ui/InstructionText";
 
 function StartGameScreen({ onConfirmNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
+
+  const {width, height} = useWindowDimensions(); //hook that react orientation changes
 
   function numberInputHandler(enteredText) {
     setEnteredNumber(enteredText);
@@ -33,8 +35,10 @@ function StartGameScreen({ onConfirmNumber }) {
     onConfirmNumber(chosenNumber);
   }
 
+  const marginTopDistance = height <380 ? 30:100;
+
   return (
-    <View style={styles.rootContainer}>
+    <View style={[styles.rootContainer, {marginTop : marginTopDistance}]}>
       <Title>Guess My Number</Title>
       <Card>
         <InstructionText>Enter a number</InstructionText>
@@ -62,10 +66,12 @@ function StartGameScreen({ onConfirmNumber }) {
 
 export default StartGameScreen;
 
-const styles = StyleSheet.create({
+//const deviceHeight = Dimensions.get("window").height;
+
+const styles = StyleSheet.create({    //executed one time. we have to use hook to react to orientation changes while user use the app
   rootContainer:{
     flex:1,
-    marginTop:100,
+    //marginTop:deviceHeight <400 ? 30: 100,
     alignItems:'center',
   },
 

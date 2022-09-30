@@ -38,32 +38,32 @@ function StartGameScreen({ onConfirmNumber }) {
   const marginTopDistance = height < 380 ? 30 : 100;
 
   return (
-    <ScrollView style = {styles.screen}>
-    <KeyboardAvoidingView style={styles.screen} behavior="position">
-      <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
-        <Title>Guess My Number</Title>
-        <Card>
-          <InstructionText>Enter a number</InstructionText>
-          <TextInput
-            style={styles.textInput}
-            maxLength={2}
-            keyboardType="number-pad"
-            autoCapitalize="none"
-            autoCorrect={false}
-            onChangeText={numberInputHandler}
-            value={enteredNumber}
-          />
-          <View style={styles.buttonsContainer}>
-            <View style={styles.buttonContainer}>
-              <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+    <ScrollView style={styles.screen}>
+      <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
+          <Title>Guess My Number</Title>
+          <Card>
+            <InstructionText>Enter a number</InstructionText>
+            <TextInput
+              style={styles.textInput}
+              maxLength={2}
+              keyboardType="number-pad"
+              autoCapitalize="none"
+              autoCorrect={false}
+              onChangeText={numberInputHandler}
+              value={enteredNumber}
+            />
+            <View style={styles.buttonsContainer}>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+              </View>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+              </View>
             </View>
-            <View style={styles.buttonContainer}>
-              <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
-            </View>
-          </View>
-        </Card>
-      </View>
-    </KeyboardAvoidingView>
+          </Card>
+        </View>
+      </KeyboardAvoidingView>
     </ScrollView>
   );
 }
@@ -73,8 +73,8 @@ export default StartGameScreen;
 //const deviceHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({    //executed one time. we have to use hook to react to orientation changes while user use the app
-  screen:{
-    flex:1,
+  screen: {
+    flex: 1,
   },
   rootContainer: {
     flex: 1,
